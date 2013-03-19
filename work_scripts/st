@@ -1,0 +1,8 @@
+#!/bin/bash
+sudo modprobe fuse
+truecrypt --mount --keyfiles= --protect-hidden=no ~/.private /media/truecrypt
+eval `ssh-agent`
+ssh-add ~/.ssh/id_rsa
+ine
+sd
+cd ~/rjm

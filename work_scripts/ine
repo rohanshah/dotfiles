@@ -1,0 +1,4 @@
+#!/bin/bash
+ENV=vm
+[ $1 ] && ENV=$1
+~/install_env.sh $ENV rshah@rjmetrics.com Y
