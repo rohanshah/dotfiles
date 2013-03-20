@@ -38,4 +38,13 @@ highlight Pmenu ctermfg=blue ctermbg=white	" coloring for Pmenu (used in autocom
 set maxmempattern=2000000 " this is because svgs are huge
 set wrap! " Don't wrap lines I hate that
 set statusline=%t%m%r\ \|\ [%{strlen(&ft)?&ft:'none'}][%{&ff}][%{strlen(&fenc)?&fenc:'none'}]%=line\ %l\ of\ %L " Set status line
-set rnu
+set rnu " relative line numbers
+set hidden " Only hide the file when switching buffers otherwise it will not retain its undo history
+
+" Status Line
+set laststatus=2		" always show the status line
+set statusline=%t\      " tail of the filename with space after
+set statusline+=%m      " modified flag
+set statusline+=%r      " read only flag
+set statusline+=%=      " left/right separator
+set statusline+=line\ %l\ of\ %L   " current line and total lines
