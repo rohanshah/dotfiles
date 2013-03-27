@@ -40,6 +40,7 @@ set wrap! " Don't wrap lines I hate that
 set statusline=%t%m%r\ \|\ [%{strlen(&ft)?&ft:'none'}][%{&ff}][%{strlen(&fenc)?&fenc:'none'}]%=line\ %l\ of\ %L " Set status line
 set rnu " relative line numbers
 set hidden " Only hide the file when switching buffers otherwise it will not retain its undo history
+map <F3> :NERDTreeToggle<CR>
 
 " Status Line
 set laststatus=2		" always show the status line
