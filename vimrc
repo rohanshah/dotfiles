@@ -26,6 +26,7 @@ set hlsearch									" highlights searched text
 set ignorecase									" ignore case on searches
 set smartcase									" override ignore case when search has uppercase in it
 nmap \q :nohlsearch<CR>							" mapping to turn off highlighting
+nnoremap * *``									" super * search does not jump to next result
 
 												" MISCELLANEOUS SETTINGS
 syntax enable									" enable syntax highlighting
