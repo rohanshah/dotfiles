@@ -4,14 +4,14 @@
 execute pathogen#infect()
 
 												" disable arrow keys in normal mode
-" nmap <up> <nop>
-" nmap <down> <nop>
-" nmap <left> <nop>
-" nmap <right> <nop>
-" imap <up> <nop>
-" imap <down> <nop>
-" imap <left> <nop>
-" imap <right> <nop>
+nmap <up> <nop>
+nmap <down> <nop>
+nmap <left> <nop>
+nmap <right> <nop>
+"imap <up> <nop>
+"imap <down> <nop>
+"imap <left> <nop>
+"imap <right> <nop>
 
 												" TAB SETTINGS
 set autoindent									" uses indent from the current line as indent for new line
