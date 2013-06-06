@@ -1,4 +1,3 @@
-dotfiles
-========
-
-These are my dot files!
+Rohan's Wonderful Dotfiles
+=========================
+Welcome to my Dotfile!
