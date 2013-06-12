@@ -35,11 +35,14 @@ filetype plugin on								" enable filetype detection
 highlight Pmenu ctermfg=blue ctermbg=white		" coloring for Pmenu (used in autocomplete)
 set maxmempattern=2000000 						" increase max memory for patterns because svgs are huge and cause vim to break
 set wrap! 										" don't wrap lines because I hate that
-set rnu 										" relative line numbers
 set hidden 										" only hide the file when switching buffers otherwise it will not retain its undo history
 map <F3> :NERDTreeToggle<CR>					" Toggle NERDTree on and off
 set backspace=2 								" this makes backspace actually work in insert mode for some reason
-
+if version >= 703								" if the version is 7.03 or greater
+	set rnu 									" relative line numbers
+else											" otherwise
+	set nu										" line numbers
+endif
 												" STATUS LINE
 set laststatus=2								" always show the status line
 set statusline=%t\ 								" tail of the filename with space after
