@@ -1,0 +1,26 @@
+[global_config]
+  title_hide_sizetext = True
+[keybindings]
+  split_horiz = <Ctrl><Shift>e
+  split_vert = <Ctrl><Shift>o
+[profiles]
+  [[default]]
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#babdb6:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    scrollback_lines = 1000
+    use_system_font = False
+    cursor_color = "#babdb6"
+    foreground_color = "#babdb6"
+    split_to_group = True
+    show_titlebar = False
+    font = Courier 10 Pitch 12
+    background_color = "#002b36"
+    cursor_blink = False
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
