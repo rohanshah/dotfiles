@@ -28,6 +28,17 @@ set smartcase									" override ignore case when search has uppercase in it
 nmap \q :nohlsearch<CR>							" mapping to turn off highlighting
 nnoremap * *``									" super * search does not jump to next result
 
+												" STATUS LINE
+set laststatus=2								" always show the status line
+set statusline=%t\ 								" tail of the filename with space after
+set statusline+=%m								" modified flag
+set statusline+=%r								" read only flag
+set statusline+=%h\ 							" help flag
+set statusline+=%=								" left/right separator
+set statusline+=[column:%c]						" current column
+set statusline+=[line:%l]						" current line
+set statusline+=[%p%%]							" percentage through file
+
 												" MISCELLANEOUS SETTINGS
 syntax enable									" enable syntax highlighting
 filetype on										" enable filetype detection
@@ -38,15 +49,10 @@ set wrap! 										" don't wrap lines because I hate that
 set hidden 										" only hide the file when switching buffers otherwise it will not retain its undo history
 map <F3> :NERDTreeToggle<CR>					" Toggle NERDTree on and off
 set backspace=2 								" this makes backspace actually work in insert mode for some reason
+set colorcolumn=81								" show colorcolumn -- lines of code should not be more that 80 characters
+highlight ColorColumn ctermbg=lightblue			" make the colorcolumn white
 if version >= 703								" if the version is 7.03 or greater
 	set rnu 									" relative line numbers
 else											" otherwise
 	set nu										" line numbers
 endif
-												" STATUS LINE
-set laststatus=2								" always show the status line
-set statusline=%t\ 								" tail of the filename with space after
-set statusline+=%m								" modified flag
-set statusline+=%r								" read only flag
-set statusline+=%=								" left/right separator
-set statusline+=line\ %l\ of\ %L 				" current line and total lines
