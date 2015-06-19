@@ -18,7 +18,8 @@ set autoindent									" uses indent from the current line as indent for new lin
 set tabstop=4									" how many columns a tab counts for
 set shiftwidth=4								" how many columns text is indendented with the reindent operations
 set smarttab									" uses the value of shiftwidth when inserting or deleting tabs
-noremap \t :setlocal expandtab!<CR>				" change tabs to spaces for current file only
+set expandtab                                   " tabs should be spaces by default
+noremap \t :setlocal expandtab!<CR>				" change spaced tabs to actual tabs for current file only
 
 												" SEARCH SETTINGS
 set incsearch									" incremental search (i.e. search while typing)
@@ -43,6 +44,7 @@ set statusline+=[%p%%]							" percentage through file
 syntax enable									" enable syntax highlighting
 filetype on										" enable filetype detection
 filetype plugin on								" enable filetype detection
+filetype plugin indent on						" enable filetype detection
 highlight Pmenu ctermfg=blue ctermbg=white		" coloring for Pmenu (used in autocomplete)
 set maxmempattern=2000000 						" increase max memory for patterns because svgs are huge and cause vim to break
 set wrap! 										" don't wrap lines because I hate that
