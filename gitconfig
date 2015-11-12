@@ -1,0 +1,24 @@
+[user]
+	name = Rohan Shah
+	email = rshah@rjmetrics.com
+
+[color]
+branch = auto
+diff = auto
+status = auto
+
+[color "branch"]
+current = blue
+local = green
+remote = red
+
+[color "diff"]
+meta = cyan
+frag = magenta
+old = red
+new = yellow
+
+[color "status"]
+added = yellow
+changed = red
+untracked = cyan
