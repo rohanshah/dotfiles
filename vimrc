@@ -40,6 +40,10 @@ set statusline+=[column:%c]						" current column
 set statusline+=[line:%l]						" current line
 set statusline+=[%p%%]							" percentage through file
 
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 30
+let g:ctrlp_regexp = 1                          " default to regexp search
+
 												" MISCELLANEOUS SETTINGS
 syntax enable									" enable syntax highlighting
 filetype on										" enable filetype detection
