@@ -10,6 +10,7 @@ alias bcat="blackbox_cat"
 alias memory="free -h"
 alias space="df"
 alias rm-swaps='find . -name "*.swp" -type f -delete'
+alias stopped-services='service --status-all 2>&1 | grep "\[ - \]"'
 
 function g() {
   grep \
