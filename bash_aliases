@@ -25,9 +25,3 @@ function g() {
       --exclude-dir=maps \
       "$@" . | less -R -
 }
-
-function cp-in() {
-  DIR="$(dirname $1)"
-  NEW_FILE=$DIR'/'$2
-  cp $1 $NEW_FILE
-}
