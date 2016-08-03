@@ -3,7 +3,7 @@ alias la='ls -lah'
 
 # vm aliases
 alias gateway="ssh -A rshah@echo.rjmetrics.com"
-alias ie="install_env.sh box rshah@rjmetrics.com \"Rohan Shah\""
+alias ie="install_env.sh"
 alias install-test="install_env.sh box-test rshah@rjmetrics.com \"Rohan Shah\""
 alias bed="ed=vim blackbox_edit"
 alias bcat="blackbox_cat"
