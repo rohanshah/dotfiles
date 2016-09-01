@@ -11,6 +11,7 @@ alias memory="free -h"
 alias space="df"
 alias rm-swaps='find . -name "*.swp" -type f -delete'
 alias stopped-services='service --status-all 2>&1 | grep "\[ - \]"'
+alias cluster-metrics='cd ~; rm -r cluster-metrics; aws s3 sync s3://batcheetah-reports/cluster-metrics/ cluster-metrics/; cd cluster-metrics/'
 
 function g() {
   grep \
