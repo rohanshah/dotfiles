@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/rjmdash/rjm/build'
 let g:netrw_dirhist_2='/home/rohan/.vim'
 let g:netrw_dirhist_3='/Users/rohan/clojure-noob/src/clojure_noob'
+let g:netrw_dirhist_4='/Users/rohan/dotfiles/vim/bundle'
+let g:netrw_dirhist_5='/Users/rohan/dotfiles/vim/after/syntax'
