@@ -1,28 +1,52 @@
+#!/bin/bash
+
 alias l='ls -l'
 alias la='ls -lah'
 
-# vm aliases
-alias gateway="ssh -A rshah@echo.rjmetrics.com"
-alias ie="install_env.sh"
-alias install-test="install_env.sh box-test rshah@rjmetrics.com \"Rohan Shah\""
-alias bed="ed=vim blackbox_edit"
-alias bcat="blackbox_cat"
 alias memory="free -h"
 alias space="df"
-alias rm-swaps='find . -name "*.swp" -type f -delete'
-alias stopped-services='service --status-all 2>&1 | grep "\[ - \]"'
-alias cluster-metrics='cd ~; rm -r cluster-metrics; aws s3 sync s3://batcheetah-reports/cluster-metrics/ cluster-metrics/; cd cluster-metrics/'
 
+alias bim="vim"
+alias im="vim"
+
+# alias docker-cleanup='docker rm -f $(docker ps -a -q) ;\
+#                        docker rmi -f $(docker images -q) ;\
+#                        docker rmi -f $(docker images -q -f dangling=true) ;\
+#                        docker volume rm $(docker volume ls -qf dangling=true)'
+
+function rm-ext() {
+  find . -name "*.$1" -type f -delete
+}
+
+alias grep=ggrep
 function g() {
   grep \
       -rnI \
-      --exclude=*.lein-repl-history \
-      --exclude=*.lein-env \
       --color=always \
       --exclude=*\.min\.js \
+      --exclude-dir=.git \
+      --exclude-dir=target \
       --exclude-dir=node_modules \
       --exclude-dir=bower_components \
-      --exclude-dir=Framework \
-      --exclude-dir=maps \
+      --exclude-dir=components \
+      --exclude-dir=kubeconfigs \
+      --exclude-dir=pyenv \
+      --exclude-dir=pyenv2.7 \
       "$@" . | less -R -
+}
+
+function cmux() {
+  tmux -2 new -d -s $1 && tmux -2 attach -t $1
+}
+
+function amux() {
+  tmux -2 attach -t $1
+}
+
+function pods() {
+  kubectl get pods --namespace=$1
+}
+
+function connect-to-pod() {
+  kubectl exec -it --namespace=$1 $2 bash
 }
