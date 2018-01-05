@@ -50,3 +50,23 @@ function pods() {
 function connect-to-pod() {
   kubectl exec -it --namespace=$1 $2 bash
 }
+
+function remove-core-local() {
+  rm -rf  ~/.m2/repository/com/blackfynn/blackfynn-core_2.12
+  rm -rf  ~/.ivy2/cache/com.blackfynn/blackfynn-core_2.12
+  rm -rf  ~/.ivy2/local/com.blackfynn/blackfynn-core_2.12
+  echo "Removed Local Core"
+}
+
+function deploy-core-local() {
+  remove-core-local
+  cd ~/blackfynn/code/blackfynn-api/
+  sbt core/clean core/publishM2 core/publishLocal
+  cd -
+}
+
+function fix-vpn() {
+  cd ~/blackfynn/code/operations/vpn
+  ./masq.sh
+  cd -
+}
