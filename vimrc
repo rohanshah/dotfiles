@@ -50,11 +50,22 @@ let g:ctrlp_max_depth = 30
 let g:ctrlp_regexp = 1                              " default to regexp search
 let g:ctrlp_custom_ignore = '\v[\/](target)$'       " ignore target directories
 
-                                                    " Ack.vim CONFIGURATION
+                                                    " ACK.VIM CONFIGURATION
 nnoremap <Leader>f :Ack "hello"<CR>                 " sends the selection to ack
 if executable('ag')                                 " use ag to search if available
     let g:ackprg = 'ag --vimgrep'                   " otherwise defaults to ack
 endif
+
+                                                    " SCALAFMT CONFIGURATION
+" noremap <F5> :Autoformat<CR>
+" function! StartNailgunScalaFmt()
+"     execute(':silent! !scalafmt_ng 2>/dev/null 1>/dev/null &')
+"     execute(':redraw!')
+" endfunction
+" call StartNailgunScalaFmt()
+" let g:formatdef_scalafmt = "'ng scalafmt --stdin'"
+" let g:formatters_scala = ['scalafmt']
+
 
                                                     " MISCELLANEOUS SETTINGS
 syntax enable                                       " enable syntax highlighting

@@ -174,3 +174,10 @@ Remove / Stop a Stack:
 ```
 docker stack rm [SERVICE]
 ```
+
+## Volumes
+Volumes are the best way to persist data in Docker.
+
+Volumes are stored in a part of the host filesystem which is managed by Docker.
+
+Data is stored in `/var/lib/docker/volumes/` on Linux.
