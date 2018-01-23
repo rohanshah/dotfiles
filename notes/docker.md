@@ -68,7 +68,7 @@ docker run -d ...
 
 List running containers and their associated IDs:
 ```
-docker container ls
+docker ps
 ```
 
 Stop a container:
