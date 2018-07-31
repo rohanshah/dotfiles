@@ -72,6 +72,7 @@ syntax enable                                       " enable syntax highlighting
 filetype on                                         " enable filetype detection
 filetype plugin on                                  " enable filetype detection
 filetype plugin indent on                           " enable filetype detection
+autocmd BufNewFile,BufRead *.nf set syntax=groovy   " Groovy syntax highlighting for Nextflow files
 highlight Pmenu ctermfg=blue ctermbg=white          " coloring for Pmenu (used in autocomplete)
 set maxmempattern=2000000                           " increase max memory for patterns because svgs are huge and cause vim to break
 set wrap!                                           " don't wrap lines because I hate that

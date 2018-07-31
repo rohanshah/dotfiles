@@ -9,6 +9,8 @@ alias space="df"
 alias bim="vim"
 alias im="vim"
 
+alias datetime='date +"%Y%m%d%H%M%S"'
+
 # alias docker-cleanup='docker rm -f $(docker ps -a -q) ;\
 #                        docker rmi -f $(docker images -q) ;\
 #                        docker rmi -f $(docker images -q -f dangling=true) ;\
@@ -69,4 +71,12 @@ function fix-vpn() {
   cd ~/blackfynn/code/operations/vpn
   ./masq.sh
   cd -
+}
+
+function docker() {
+  if [[ $1 == "compose" ]]; then
+      command docker-compose "${@:2}"
+  else
+      command docker "$@"
+  fi
 }
