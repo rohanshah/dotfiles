@@ -1,16 +1,14 @@
-### Docker Heirarchy
+## Docker Heirarchy
 
-**Stack** - defines the interactions of all services
-**Service** - defines how containers behave in production
-**Container** / **Image** - defines the runtime environment of a single application
+* **Stack** - defines the interactions of all services
+* **Service** - defines how containers behave in production
+* **Container** / **Image** - defines the runtime environment of a single application
 
 ## Containers / Images
 
 An **image** is a lightweight, stand-alone, executable package that includes
 everything needed to run a piece of software, including the code, a runtime,
 libraries, environment variables, and config files.
-
-**Images** are defined by a `Dockerfile`
 
 A **container** is a runtime instance of an image—what the image becomes in
 memory when actually executed. It runs completely isolated from the host
@@ -21,6 +19,8 @@ Containers run apps natively on the host machine’s kernel. They have better
 performance characteristics than virtual machines that only get virtual access
 to host resources through a hypervisor. Containers can get native access, each
 one running in a discrete process, taking no more memory than any other executable.
+
+Images are defined by a `Dockerfile`
 
 Example `Dockerfile`:
 ```
@@ -68,7 +68,7 @@ docker run -d ...
 
 List running containers and their associated IDs:
 ```
-docker container ls
+docker ps
 ```
 
 Stop a container:
