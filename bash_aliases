@@ -16,6 +16,11 @@ alias datetime='date +"%Y%m%d%H%M%S"'
 #                        docker rmi -f $(docker images -q -f dangling=true) ;\
 #                        docker volume rm $(docker volume ls -qf dangling=true)'
 
+alias cloudwrap='/Users/rohan/blackfynn/code/cloudwrap/target/debug/cloudwrap'
+
+alias ctags="`brew --prefix`/bin/ctags"
+alias ctags-compile="ctags -R -f .tags ."
+
 function rm-ext() {
   find . -name "*.$1" -type f -delete
 }
@@ -26,14 +31,17 @@ function g() {
       -rnI \
       --color=always \
       --exclude=*\.min\.js \
+      --exclude=.tags \
       --exclude-dir=.git \
+      --exclude-dir=.idea \
+      --exclude-dir=.terraform \
       --exclude-dir=target \
       --exclude-dir=node_modules \
       --exclude-dir=bower_components \
-      --exclude-dir=components \
       --exclude-dir=kubeconfigs \
       --exclude-dir=pyenv \
       --exclude-dir=pyenv2.7 \
+      --exclude-dir=htmlreport \
       "$@" . | less -R -
 }
 

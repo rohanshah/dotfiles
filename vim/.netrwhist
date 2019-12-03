@@ -1,3 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =3
 let g:netrw_dirhist_1='/Users/rohan/blackfynn/code/operations/.git'
+let g:netrw_dirhist_2='/Users/rohan/blackfynn/code/blackfynn-api/api/src/test/scala/com/blackfynn/api'
+let g:netrw_dirhist_3='/Users/rohan/blackfynn/code/blackfynn-api/core/src/test/scala/com/blackfynn/managers'

@@ -1,0 +1,7 @@
+## Installation
+To install coc.nvim plugin and get around the error
+"[coc.nvim] javascript file not found, please compile the code or use release branch."
+you need to run the following in Vim:
+```
+:call coc#util#install()
+```

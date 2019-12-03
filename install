@@ -3,5 +3,6 @@ ln -s ~/dotfiles/vim ~/.vim
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/gitconfig ~/.gitconfig
 ln -s ~/dotfiles/bash_aliases ~/.bash_aliases
+ln -s ~/dotfiles/git-completion.bash ~/.git-completion.bash
 git submodule init
 git submodule update
