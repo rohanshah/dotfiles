@@ -71,6 +71,7 @@ filetype on                                         " enable filetype detection
 filetype plugin on                                  " enable filetype detection
 filetype plugin indent on                           " enable filetype detection
 autocmd BufNewFile,BufRead *.nf set syntax=groovy   " Groovy syntax highlighting for Nextflow files
+map <F12> :syntax enable<CR>                        " hot key to enable syntax highlighting
 set autoread                                        " Auto-reload files that change on disk
 au CursorHold * checktime
 highlight Pmenu ctermfg=blue ctermbg=white          " coloring for Pmenu (used in autocomplete)
