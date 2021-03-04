@@ -34,6 +34,3 @@
 [submodule "vim/bundle/vim-autoformat"]
 	path = vim/bundle/vim-autoformat
 	url = https://github.com/Chiel92/vim-autoformat.git
-[submodule "vim/bundle/coc.nvim"]
-	path = vim/bundle/coc.nvim
-	url = https://github.com/neoclide/coc.nvim.git

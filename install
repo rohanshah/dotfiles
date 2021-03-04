@@ -1,9 +1,9 @@
 #!/bin/bash
-ln -s ~/dotfiles/vim ~/.vim
-ln -s ~/dotfiles/vimrc ~/.vimrc
-ln -s ~/dotfiles/gitconfig ~/.gitconfig
-ln -s ~/dotfiles/bash_aliases ~/.bash_aliases
-ln -s ~/dotfiles/git-completion.bash ~/.git-completion.bash
-ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+ln -sf ~/dotfiles/vim ~/.vim
+ln -sf ~/dotfiles/vimrc ~/.vimrc
+ln -sf ~/dotfiles/gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/bash_aliases ~/.bash_aliases
+ln -sf ~/dotfiles/git-completion.bash ~/.git-completion.bash
+ln -sf ~/dotfiles/tmux.conf ~/.tmux.conf
 git submodule init
 git submodule update
