@@ -25,6 +25,9 @@ alias cloudwrap='/Users/rohan/blackfynn/code/cloudwrap/target/debug/cloudwrap'
 alias ctags="`brew --prefix`/bin/ctags"
 alias ctags-compile="ctags -R -f .tags ."
 
+alias code="cd ~/blackfynn/code"
+alias blackfynn="cd blackfynn"
+
 function rm-ext() {
   find . -name "*.$1" -type f -delete
 }
