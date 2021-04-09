@@ -22,3 +22,6 @@ new = yellow
 added = yellow
 changed = red
 untracked = cyan
+
+[pull]
+  rebase = false

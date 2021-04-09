@@ -13,26 +13,21 @@ alias ga="git add -p"
 alias gb="git branch"
 alias gc="git commit -m"
 alias gd="git diff"
-alias gp="git push -u origin HEAD"
 alias gs="git status"
 
+alias push="git push -u origin HEAD"
 alias pull="git pull"
 
 alias datetime='date +"%Y%m%d%H%M%S"'
 
-alias cloudwrap='/Users/rohan/blackfynn/code/cloudwrap/target/debug/cloudwrap'
-
 alias ctags="`brew --prefix`/bin/ctags"
 alias ctags-compile="ctags -R -f .tags ."
-
-alias code="cd ~/blackfynn/code"
-alias blackfynn="cd blackfynn"
 
 function rm-ext() {
   find . -name "*.$1" -type f -delete
 }
 
-alias clean-branches="git branch | sed -E 's/master|\*|dev|development//g' | tr '\n' ' ' | xargs git branch -D"
+alias clean-branches="git branch | sed -E 's/master|\*|development|develop|dev//g' | tr '\n' ' ' | xargs git branch -D"
 
 alias grep=ggrep
 function g() {
@@ -45,6 +40,7 @@ function g() {
       --exclude-dir=.idea \
       --exclude-dir=.terraform \
       --exclude-dir=target \
+      --exclude-dir=build \
       --exclude-dir=macro \
       --exclude-dir=node_modules \
       --exclude-dir=bower_components \
@@ -61,17 +57,15 @@ function g() {
 }
 
 function cmux() {
+  if [ -d "$1" ]; then
+    cd $1
+  fi
+
   tmux -2 new -d -s $1 && tmux -2 attach -t $1
 }
 
 function amux() {
   tmux -2 attach -t $1
-}
-
-function fix-vpn() {
-  cd ~/blackfynn/code/operations/vpn
-  ./masq.sh
-  cd -
 }
 
 function docker() {

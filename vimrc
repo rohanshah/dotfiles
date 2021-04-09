@@ -56,7 +56,13 @@ set statusline+=[%p%%]                              " percentage through file
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 30
 let g:ctrlp_regexp = 1                              " default to regexp search
-let g:ctrlp_custom_ignore = '\v[\/](target)$'       " ignore target directories
+let g:ctrlp_custom_ignore = '\v[\/](target|build)$' " ignore custom directories
+
+                                                    " COC SETTINGS
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 
                                                     " MISCELLANEOUS SETTINGS
@@ -64,7 +70,6 @@ syntax enable                                       " enable syntax highlighting
 filetype on                                         " enable filetype detection
 filetype plugin on                                  " enable filetype detection
 filetype plugin indent on                           " enable filetype detection
-autocmd BufNewFile,BufRead *.nf set syntax=groovy   " Groovy syntax highlighting for Nextflow files
 map <F12> :syntax enable<CR>                        " hot key to enable syntax highlighting
 set autoread                                        " Auto-reload files that change on disk
 au CursorHold * checktime
@@ -76,6 +81,7 @@ map <F3> :NERDTreeToggle<CR>                        " Toggle NERDTree on and off
 set backspace=2                                     " this makes backspace actually work in insert mode for some reason
 set colorcolumn=81                                  " show colorcolumn -- lines of code should not be more that 80 characters
 highlight ColorColumn ctermbg=lightblue             " make the colorcolumn white
+set re=0
 
 set background=dark                                 " set solarized to use the dark backgroun
 colorscheme solarized                               " make the colorscheme use solarize

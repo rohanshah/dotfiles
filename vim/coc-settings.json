@@ -1,0 +1,8 @@
+{
+  "languageserver": {
+    "kotlin": {
+      "command": "~/.vim/bundle/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
+      "filetypes": ["kotlin"]
+    }
+  }
+}
