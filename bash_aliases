@@ -20,8 +20,8 @@ alias pull="git pull"
 
 alias datetime='date +"%Y%m%d%H%M%S"'
 
-alias ctags="`brew --prefix`/bin/ctags"
-alias ctags-compile="ctags -R -f .tags ."
+# alias ctags="`brew --prefix`/bin/ctags"
+# alias ctags-compile="ctags -R -f .tags ."
 
 function rm-ext() {
   find . -name "*.$1" -type f -delete
