@@ -1,5 +1,7 @@
-To Edit a Selection:
-  visual highlight the lines you want with shift+v
+## Vim Cheat Sheet
+
+### Edit a Selection
+  Visual highlight the lines you want with shift+v
   then type : to get :'<,'>
 
   Examples:

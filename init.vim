@@ -1,17 +1,21 @@
-" Rohan's vimrc
-" --------------
+" Neovim Configuration
+" --------------------
 
-execute pathogen#infect()
+call plug#begin(stdpath('data') . '/plugged')
+
+Plug 'altercation/vim-colors-solarized'
+Plug 'kien/ctrlp.vim'
+Plug 'udalov/kotlin-vim'
+Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+call plug#end()
 
                                                     " disable arrow keys in normal mode
 nmap <up> <nop>
 nmap <down> <nop>
 nmap <left> <nop>
 nmap <right> <nop>
-"imap <up> <nop>
-"imap <down> <nop>
-"imap <left> <nop>
-"imap <right> <nop>
 
                                                     " TAB SETTINGS
 set autoindent                                      " uses indent from the current line as indent for new line
@@ -21,12 +25,7 @@ set smarttab                                        " uses the value of shiftwid
 set expandtab                                       " tabs should be spaces by default
 noremap \t :setlocal expandtab!<CR>                 " change spaced tabs to actual tabs for current file only
 
-                                                    " LINE NUMBER SETTINGS
-if version >= 703                                   " if the version is 7.03 or greater
-    set rnu                                         " relative line numbers
-else                                                " otherwise
-    set nu                                          " line numbers
-endif
+set rnu                                             " relative line numbers
 noremap \n :setlocal invrelativenumber<CR>          " toggle relative line number bar on/off
 
                                                     " SEARCH SETTINGS
@@ -59,6 +58,15 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+
+
                                                     " MISCELLANEOUS SETTINGS
 syntax enable                                       " enable syntax highlighting
 filetype on                                         " enable filetype detection
@@ -80,3 +88,16 @@ set re=0
                                                     " put last
 set background=dark                                 " set solarized to use the dark background
 colorscheme solarized                               " make the colorscheme use solarize
+
+                                                    " toggle background between light and dark
+let t:is_dark = 1
+function! Toggle_background()
+    if t:is_dark == 0
+        set background=dark
+        let t:is_dark = 1
+    else
+        set background=light
+        let t:is_dark = 0
+    endif
+endfunction
+noremap \b :call Toggle_background()<CR>
