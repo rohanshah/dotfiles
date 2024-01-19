@@ -77,9 +77,9 @@ set colorcolumn=81                                  " show colorcolumn -- lines 
 highlight ColorColumn ctermbg=lightblue             " make the colorcolumn white
 set re=0
 
-if (has("clipboard"))                               " Use the system clipboard if possible (https://vim.fandom.com/wiki/Accessing_the_system_clipboard)
-  set clipboard=unnamedplus
-endif
+" if (has("clipboard"))                               " Use the system clipboard if possible (https://vim.fandom.com/wiki/Accessing_the_system_clipboard)
+"   set clipboard=unnamedplus
+" endif
 
                                                     " put last
 set background=dark                                 " set solarized to use the dark background

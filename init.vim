@@ -3,11 +3,11 @@
 
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'altercation/vim-colors-solarized'
 Plug 'kien/ctrlp.vim'
 Plug 'udalov/kotlin-vim'
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
@@ -91,7 +91,7 @@ endif
 
                                                     " put last
 set background=dark                                 " set solarized to use the dark background
-colorscheme solarized                               " make the colorscheme use solarize
+" colorscheme solarized                               " make the colorscheme use solarize
 
                                                     " toggle background between light and dark
 let t:is_dark = 1
