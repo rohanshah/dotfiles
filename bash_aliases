@@ -6,6 +6,8 @@ alias la='ls -lah'
 alias memory="free -h"
 alias space="df"
 
+alias uuid='uuidgen | tr -d '\n' | tr '[:upper:]' '[:lower:]' | xargs echo'
+
 alias bim="vim"
 alias im="vim"
 
@@ -20,6 +22,11 @@ alias pull="git pull"
 
 alias datetime='date +"%Y%m%d%H%M%S"'
 
+alias cheat='less ~/dotfiles/cheatsheet.md'
+
+alias caffeine='caffeinate -disu -t 1000000000'
+alias password='pwgen --num-passwords=1 -snc'
+
 # alias ctags="`brew --prefix`/bin/ctags"
 # alias ctags-compile="ctags -R -f .tags ."
 
@@ -27,7 +34,7 @@ function rm-ext() {
   find . -name "*.$1" -type f -delete
 }
 
-alias clean-branches="git branch | sed -E 's/master|\*|development|develop|dev//g' | tr '\n' ' ' | xargs git branch -D"
+alias clean-branches="git branch | sed -E '/main|master|\*|development|develop|dev/d' | xargs git branch -D"
 
 alias grep=ggrep
 function g() {
@@ -54,6 +61,12 @@ function g() {
       --exclude-dir=.metals \
       --exclude-dir=htmlreport \
       "$@" . | less -R -
+}
+
+function pj() {
+    jq . $1 > /tmp/pretty.json
+
+    mv /tmp/pretty.json $1
 }
 
 function cmux() {
