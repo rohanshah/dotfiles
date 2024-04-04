@@ -53,12 +53,6 @@ let g:ctrlp_max_depth = 30
 let g:ctrlp_regexp = 1                              " default to regexp search
 let g:ctrlp_custom_ignore = '\v[\/](target|build)$' " ignore custom directories
 
-                                                    " COC SETTINGS
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
                                                     " MISCELLANEOUS SETTINGS
 syntax enable                                       " enable syntax highlighting
 filetype on                                         " enable filetype detection

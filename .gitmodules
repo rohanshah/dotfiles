@@ -1,39 +1,12 @@
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = git@github.com:kien/ctrlp.vim.git
-[submodule "vim/bundle/vim-coffee-script"]
-	path = vim/bundle/vim-coffee-script
-	url = git@github.com:kchmck/vim-coffee-script.git
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = git@github.com:scrooloose/nerdtree.git
-[submodule "vim/bundle/vim-clojure-static"]
-	path = vim/bundle/vim-clojure-static
-	url = https://github.com/guns/vim-clojure-static.git
-[submodule "vim/bundle/vim-fireplace"]
-	path = vim/bundle/vim-fireplace
-	url = https://github.com/tpope/vim-fireplace.git
-[submodule "vim/bundle/vim-scala"]
-	path = vim/bundle/vim-scala
-	url = https://github.com/derekwyatt/vim-scala.git
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/bundle/slimux"]
-	path = vim/bundle/slimux
-	url = https://github.com/epeli/slimux.git
-[submodule "vim/bundle/ack.vim"]
-	path = vim/bundle/ack.vim
-	url = https://github.com/mileszs/ack.vim.git
 [submodule "vim/bundle/vim-autoformat"]
 	path = vim/bundle/vim-autoformat
 	url = https://github.com/Chiel92/vim-autoformat.git
-[submodule "vim/bundle/kotlin-vim"]
-	path = vim/bundle/kotlin-vim
-	url = https://github.com/udalov/kotlin-vim.git
-[submodule "vim/bundle/kotlin-language-server"]
-	path = vim/bundle/kotlin-language-server
-	url = git@github.com:fwcd/kotlin-language-server.git
-[submodule "vim/bundle/coc.nvim"]
-	path = vim/bundle/coc.nvim
-	url = git@github.com:neoclide/coc.nvim.git

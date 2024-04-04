@@ -27,9 +27,6 @@ alias cheat='less ~/dotfiles/cheatsheet.md'
 alias caffeine='caffeinate -disu -t 1000000000'
 alias password='pwgen --num-passwords=1 -snc'
 
-# alias ctags="`brew --prefix`/bin/ctags"
-# alias ctags-compile="ctags -R -f .tags ."
-
 function rm-ext() {
   find . -name "*.$1" -type f -delete
 }
