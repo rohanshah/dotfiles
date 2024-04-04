@@ -6,7 +6,7 @@ alias la='ls -lah'
 alias memory="free -h"
 alias space="df"
 
-alias uuid='uuidgen | tr -d '\n' | tr '[:upper:]' '[:lower:]' | xargs echo'
+alias uuid="uuidgen | tr -d '\n' | tr '[:upper:]' '[:lower:]' | xargs echo"
 
 alias bim="vim"
 alias im="vim"
