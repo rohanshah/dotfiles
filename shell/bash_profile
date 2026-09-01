@@ -1,0 +1,21 @@
+# bash configuration. zsh is the login shell; this exists so bash sessions
+# (scripts, `bash -l`, remote tooling) get the same environment.
+# Anything shared with zsh belongs in shell/common.sh, not here.
+
+PS1='$ '
+
+. "$HOME/dotfiles/shell/common.sh"
+
+##### Completion #####
+
+# Homebrew's bash-completion, if installed.
+if [ -n "$HOMEBREW_PREFIX" ] && [ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]; then
+  . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+fi
+
+# nvm's bash completion is bash-specific; zsh gets completions via compinit.
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+
+##### Must stay last #####
+
+. "$DOTFILES/shell/sdkman.sh"

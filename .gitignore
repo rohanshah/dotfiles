@@ -1,2 +1,18 @@
+# Editor swap files
 *.swp
 *.swo
+
+# Node — pyright used to be vendored here by mistake; never again
+node_modules/
+package.json
+package-lock.json
+
+# macOS
+.DS_Store
+
+# Vim/netrw leftovers
+.netrwhist
+
+# Local Claude Code state
+**/.claude/settings.local.json
+**/.claude/.cc-writes/

@@ -1,27 +1,32 @@
-source ~/.bash_profile
+# zsh configuration. zsh is the login shell on macOS.
+# Anything shared with bash belongs in shell/common.sh, not here.
 
-source ~/.zsh_pennsieve
+. "$HOME/dotfiles/shell/common.sh"
 
-# enable command autocomplete
-autoload -U compinit; compinit
+##### History #####
 
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+setopt HIST_IGNORE_ALL_DUPS   # drop older duplicates of a repeated command
+setopt HIST_IGNORE_SPACE      # skip commands that start with a space
+setopt HIST_REDUCE_BLANKS     # tidy whitespace before storing
+setopt SHARE_HISTORY          # share history across concurrent shells
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/rohan/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
-export PATH="$HOME/.local/bin:$PATH"
+##### Completion #####
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/rohan/.lmstudio/bin"
-# End of LM Studio CLI section
+# Docker's completions must be on fpath before compinit runs.
+[ -d "$HOME/.docker/completions" ] && fpath=("$HOME/.docker/completions" $fpath)
 
+# compinit runs exactly once. It used to run twice (once here, once from the
+# block Docker Desktop appended), which roughly doubled shell startup time.
+autoload -Uz compinit && compinit
+
+##### Prompt #####
+
+PS1='$ '
+
+##### Must stay last #####
+
+. "$DOTFILES/shell/sdkman.sh"
