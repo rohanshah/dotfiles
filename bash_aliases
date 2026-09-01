@@ -34,30 +34,19 @@ function rm-ext() {
 alias clean-branches="git branch | sed -E '/main|master|\*|development|develop|dev/d' | xargs git branch -D"
 
 alias grep=ggrep
+
+readonly GREP_COMMON_EXCLUDES=(
+  --exclude='*.min.js'
+  --exclude='.tags'
+  --exclude-dir={.git,.idea,.terraform,target,build,macro,node_modules,bower_components,kubeconfigs,pyenv,pyenv2.7,venv,.pytest_cache,.mypy_cache,.bloop,.metals,htmlreport,dist}
+)
+
 function g() {
-  grep \
-      -rnI \
-      --color=always \
-      --exclude=*\.min\.js \
-      --exclude=.tags \
-      --exclude-dir=.git \
-      --exclude-dir=.idea \
-      --exclude-dir=.terraform \
-      --exclude-dir=target \
-      --exclude-dir=build \
-      --exclude-dir=macro \
-      --exclude-dir=node_modules \
-      --exclude-dir=bower_components \
-      --exclude-dir=kubeconfigs \
-      --exclude-dir=pyenv \
-      --exclude-dir=pyenv2.7 \
-      --exclude-dir=venv \
-      --exclude-dir=.pytest_cache \
-      --exclude-dir=.mypy_cache \
-      --exclude-dir=.bloop \
-      --exclude-dir=.metals \
-      --exclude-dir=htmlreport \
-      "$@" . | less -R -
+  grep -rnIP --color=always "${GREP_COMMON_EXCLUDES[@]}" "$@" . | less -R -
+}
+
+function noascii() {
+    grep -rnP --color=always "${GREP_COMMON_EXCLUDES[@]}" '[^[:ascii:]]' . | less -R -
 }
 
 function pj() {
@@ -66,22 +55,56 @@ function pj() {
     mv /tmp/pretty.json $1
 }
 
+# cmux [directory|session-name] [session-name]
 function cmux() {
-  if [ -d "$1" ]; then
-    cd $1
-  fi
+  local argument="${1:-$PWD}"
+  local directory="$PWD"
+  local session_name
 
-  tmux -2 new -d -s $1 && tmux -2 attach -t $1
-}
-
-function amux() {
-  tmux -2 attach -t $1
-}
-
-function docker() {
-  if [[ $1 == "compose" ]]; then
-      command docker-compose "${@:2}"
+  if [[ -d "$argument" ]]; then
+    directory="$(cd "$argument" && pwd -P)" || return
+    session_name="${2:-${directory##*/}}"
   else
-      command docker "$@"
+    session_name="$argument"
   fi
+
+  [[ -n "$session_name" ]] || session_name="root"
+
+  tmux new-session -A -s "$session_name" -c "$directory"
+}
+
+# amux <session-name>
+function amux() {
+  local session_name="$1"
+
+  if [[ -z "$session_name" ]]; then
+    printf 'usage: amux <session-name>\n' >&2
+    return 2
+  fi
+
+  tmux attach-session -t "=$session_name"
+}
+
+function wrapcat() {
+  if (( $# == 0 )); then
+    printf 'Usage: wrapcat file…\n' >&2
+    return 1
+  fi
+
+  for file_path in "$@"; do
+    if [[ ! -e $file_path ]]; then
+      printf 'Warning: no such file: %s\n' "$file_path" >&2
+      continue
+    fi
+
+    printf '```%s\n' "$file_path"
+    cat -- "$file_path"
+    printf '```\n'
+  done
+}
+
+function md() {
+    local markdown_file="$1"
+    local html_file="/tmp/$(basename "${markdown_file%.*}").html"
+    pandoc "$markdown_file" -f gfm -s -o "$html_file" && open "$html_file"
 }
