@@ -27,6 +27,11 @@ autoload -Uz compinit && compinit
 
 PS1='$ '
 
+##### Machine-local overrides #####
+
+# zsh-only local config. Tracked but skip-worktree; see shell/local.zsh.
+[ -f "$DOTFILES/shell/local.zsh" ] && . "$DOTFILES/shell/local.zsh"
+
 ##### Must stay last #####
 
 . "$DOTFILES/shell/sdkman.sh"

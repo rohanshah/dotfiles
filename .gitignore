@@ -16,3 +16,10 @@ package-lock.json
 # Local Claude Code state
 **/.claude/settings.local.json
 **/.claude/.cc-writes/
+
+# Machine-local shell config. These two ARE tracked (committed once as empty
+# skeletons) and bootstrap.sh marks them skip-worktree, which is what actually
+# keeps your edits out of git. Listing them here is a guard for the case where
+# they ever become untracked -- a tracked file ignores .gitignore entirely.
+shell/local.sh
+shell/local.zsh

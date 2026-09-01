@@ -63,3 +63,7 @@ export NVM_DIR="$HOME/.nvm"
 
 . "$DOTFILES/shell/aliases.sh"
 . "$DOTFILES/shell/functions.sh"
+
+# Machine-local overrides. Sourced last so it can override anything above.
+# Tracked but skip-worktree; see shell/local.sh.
+[ -f "$DOTFILES/shell/local.sh" ] && . "$DOTFILES/shell/local.sh"

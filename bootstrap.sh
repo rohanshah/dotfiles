@@ -141,6 +141,32 @@ unlink_stale "$HOME/.vimrc"
 unlink_stale "$HOME/.bash_aliases"
 unlink_stale "$HOME/.git-completion.bash"
 
+##### 3. Machine-local shell config #####
+
+step "Machine-local shell config"
+# shell/local.sh and shell/local.zsh are committed as empty skeletons so they
+# exist on a fresh clone. skip-worktree tells git to ignore every later edit,
+# so secrets you put in them can never be staged or committed. The flag is
+# per-clone index state and does NOT come down with the repo, which is exactly
+# why it has to be applied here on every new machine.
+for local_file in shell/local.sh shell/local.zsh; do
+  if ! git -C "$DOTFILES" ls-files --error-unmatch "$local_file" >/dev/null 2>&1; then
+    warn "$local_file is not tracked yet; commit it before it can be marked skip-worktree"
+    continue
+  fi
+
+  if git -C "$DOTFILES" ls-files -v "$local_file" | grep -q '^S'; then
+    info "ok       $local_file already skip-worktree"
+  elif $DRY_RUN; then
+    info "would mark $local_file skip-worktree"
+  else
+    git -C "$DOTFILES" update-index --skip-worktree "$local_file"
+    info "marked   $local_file skip-worktree (local edits now invisible to git)"
+  fi
+
+  $DRY_RUN || chmod 600 "$DOTFILES/$local_file"
+done
+
 ##### 3. Language servers not covered by Homebrew #####
 
 step "Language servers"
