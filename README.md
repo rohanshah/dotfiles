@@ -1,26 +1,56 @@
-Rohan's Wonderful Dotfiles
-=========================
-Welcome to my Dotfile!
+# Rohan's Wonderful Dotfiles
+My personal configuration and tooling for neovim, tmux, bash & zsh, git, macOS and iTerm2.
 
-Vim packages are managed using [Pathogen](https://github.com/tpope/vim-pathogen)
-and kept up-to-date using [`git submodules`](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
-You can add a new package with: `git submodule add`.
+## Install (macOS)
 
-### How to install
-1. Install brew, nvim, node/npm, iTerm2
-2. Import `iterm2/profile.json` into iTerm2
-3. Run the install script
-```
-$ ./install
-```
-4. Open `nvim` and run:
-```
-:PlugInstall
+```bash
+git clone git@github.com:rohanshah/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+./bootstrap.sh
 ```
 
-### How to remove submodules
+- installs Homebrew (if missing) and the Brewfile
+- symlinks configs into `$HOME`
+- installs language servers and neovim plugins
+
+`bootstrap.sh` is idempotent in that re-running it will maintain whatever is already correct.
+However, anything that would get overwritten or disturbed by a fresh install is
+moved to `~/.dotfiles-backup/<timestamp>/`. Use `--dry-run` to show what actions
+it would perform.
+
+### Manual Steps
+1. **Import the iTerm2 profile.** Under (Preferences / Profiles / Other Actions /
+   Import JSON Profiles) import `iterm2/profile.json`. **Note:** neovim runs with
+   `termguicolors` off and uses the terminal's 16 colors so solarized does not work without this step.
+2. **`exec zsh -l`** to pick up the new shell.
+
+### Updating
+- nvim plugins: `:Lazy sync`, then commit `lazy-lock.json`.
+- Brew packages: edit `Brewfile`, then `brew bundle --file=Brewfile`.
+
+## Local-only (e.g. work-related) configuration
+
+`shell/local.sh` (both bash & zsh) and `shell/local.zsh` (zsh only) hold anything
+that shouldn't be public or committed. The files are committed as empty skeletons so they
+exist on `git clone`. Bootstrap runs: `git update-index --skip-worktree shell/local.sh shell/local.zsh`
+which tells git the files never change. Any edits stay out of `git status`.
+
+To edit and commit changes to these files, or `git pull` remote changes made
+to these files:
+
+```bash
+git update-index --no-skip-worktree shell/local.sh
+# edit & commit or git pull
+git update-index --skip-worktree shell/local.sh
 ```
-$ git submodule deinit -f -- vim/bundle/submodule
-$ rm -rf .git/modules/vim/bundle/submodule
-$ git rm -f vim/bundle/submodule
+
+Use `git ls-files -v shell/ | grep '^S'` to show what files are flagged.
+
+## Cheatsheets
 ```
+cheat
+cheat <topic>
+```
+The `cheat` command lists topics based on the files in `cheatsheets/`. Each topic
+is backed by a vanilla markdown file that lists out common key-bindings, commands,
+and workflows I use often but not often enough to memorize.
